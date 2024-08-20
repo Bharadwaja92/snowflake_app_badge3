@@ -6,7 +6,6 @@ import requests
 
 get_url = "https://www.fruityvice.com/api/fruit/watermelon"
 fruityvice_response = requests.get(get_url)
-st.text(fruityvice_response.json())
 
 # Write directly to the app
 st.title("Customize Your Smoothie :cup_with_straw:")
@@ -38,6 +37,9 @@ ingredients_list = st.multiselect(
     my_dataframe, 
     max_selections=5
 )
+
+# st.text(fruityvice_response.json())
+fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
 
 ingredients_string = ''
 
