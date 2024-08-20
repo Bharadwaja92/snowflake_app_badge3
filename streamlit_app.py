@@ -44,7 +44,7 @@ if ingredients_list:
     for fruit in ingredients_list:
         get_url = f"https://www.fruityvice.com/api/fruit/{fruit}"
         fruityvice_response = requests.get(get_url)
-        # st.text(fruityvice_response.json())
+        st.text(get_url)
         fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
 
 
