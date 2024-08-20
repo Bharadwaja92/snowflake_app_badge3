@@ -45,8 +45,8 @@ if ingredients_list:
     # st.text(ingredients_list)
 
     for fruit in ingredients_list:
-        search_on=pd_df.loc[pd_df['FRUIT_NAME'] == fruit_chosen, 'SEARCH_ON'].iloc[0]
-        st.write('The search value for ', fruit_chosen,' is ', search_on, '.')
+        search_on=pd_df.loc[pd_df['FRUIT_NAME'] == fruit, 'SEARCH_ON'].iloc[0]
+        st.write('The search value for ', fruit,' is ', search_on, '.')
         st.subheader(fruit + 'Nutritional Information')
             
         get_url = f"https://www.fruityvice.com/api/fruit/{fruit}"
