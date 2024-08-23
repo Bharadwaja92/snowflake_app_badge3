@@ -58,8 +58,8 @@ if ingredients_list:
         fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
 
 
-    ingredients_string = ' '.join(ingredients_list)
-    # ingredients_string = ' '.join(fruits_list)
+    # ingredients_string = ' '.join(ingredients_list)
+    ingredients_string = ' '.join(fruits_list)
 
     # st.write(ingredients_string)
     
