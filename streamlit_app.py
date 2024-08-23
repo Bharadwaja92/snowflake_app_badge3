@@ -15,12 +15,6 @@ st.write(
 name_on_order = st.text_input('Name on Smoothie: ')
 st.write('The name of your Smoothie will be', name_on_order)
 
-# option = st.selectbox(
-#     'What is your favorite fruit?',
-#     ('Banana', 'Strawberries', 'Peaches')
-# )
-# st.write('Your favorite fruit is:', option)
-
 # session = get_active_session()
 cnx = st.connection('snowflake')
 session = cnx.session()
@@ -30,7 +24,6 @@ my_dataframe = session.table('smoothies.public.fruit_options').select(col('FRUIT
 
 pd_df = my_dataframe.to_pandas()
 # st.dataframe(pd_df)
-# st.stop()
 
 ingredients_list = st.multiselect(
     'Choose upto 5 ingredients:',
@@ -41,8 +34,6 @@ ingredients_list = st.multiselect(
 ingredients_string = ''
 
 if ingredients_list:
-    # st.write(ingredients_list)
-    # st.text(ingredients_list)
 
     fruits_list = []
 
@@ -58,19 +49,14 @@ if ingredients_list:
         fv_df = st.dataframe(data=fruityvice_response.json(), use_container_width=True)
 
 
-    # ingredients_string = ' '.join(ingredients_list)
-    ingredients_string = ' '.join(fruits_list)
+    ingredients_string = ' '.join(ingredients_list)
 
-    # st.write(ingredients_string)
-    
-    # my_insert_stmt = """ insert into smoothies.public.orders(ingredients)
-    #             values ('""" + ingredients_string + """')"""
     my_insert_stmt = """ insert into smoothies.public.orders(ingredients, name_on_order)
                 values ('""" + ingredients_string + """','""" + name_on_order + """')"""
 
     
     st.write(my_insert_stmt)
-    # st.stop()
+
     time_to_insert = st.button('Submit order')
 
     if time_to_insert and ingredients_string:
